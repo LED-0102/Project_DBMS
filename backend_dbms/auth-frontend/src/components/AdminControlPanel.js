@@ -419,14 +419,26 @@ const AdminControlPanel = () => {
                         <p>Balls Taken: {message.team2.overs}</p>
                     </div>
                 </div>
-                <div>
+                {((message.team2.runs <= message.team1.runs) && message.team2.wickets!==10) && (<div>
                     <p>Striker: {striker} and {message.striker}</p>
-                    <p>Non-Striker: {non_striker}  and {message.non_striker}</p>
+                    <p>Non-Striker: {non_striker} and {message.non_striker}</p>
                     <p>Cur_bat_team: {message.cur_bat_team}</p>
                     <p>Bowler: {bowler}</p>
                     <p>Over_num: {overNum}</p>
                     <p>Ball_num: {ballCount}</p>
-                </div>
+                </div>)}
+
+                {((message.team2.runs < message.team1.runs) && message.team2.wickets===10) && (
+                    <div>
+                        <p>{message.team1.team} won by {message.team1.runs - message.team2.runs} runs</p>
+                    </div>
+                )}
+                {(message.team2.runs > message.team1.runs)&& (
+                    <div>
+                        <p>{message.team2.team} won by {10-message.team2.wickets} wickets</p>
+                    </div>
+                )}
+
 
                 {/* Display over-by-over happenings for both teams */}
                 
@@ -467,7 +479,7 @@ const AdminControlPanel = () => {
                                 <h3>{message.team1.team} Batting</h3>
                                 <ul>
                                     {message.player1.map(player => (
-                                        <li key={player.player_id}>{player.name}</li>
+                                        <li key={player.player_id}>{player.name} {player.runs_scored} {player.balls_faced} {player.four_bat} {player.six_bat}</li>
                                     ))}
                                 </ul>
                             </div>
@@ -477,7 +489,7 @@ const AdminControlPanel = () => {
                                 <h3>{message.team2.team} Batting</h3>
                                 <ul>
                                     {message.player2.map(player => (
-                                        <li key={player.player_id}>{player.name}</li>
+                                        <li key={player.player_id}>{player.name} {player.runs_scored} {player.balls_faced} {player.four_bat} {player.six_bat}</li>
                                     ))}
                                 </ul>
                             </div>
@@ -487,7 +499,7 @@ const AdminControlPanel = () => {
                                 <h3>{message.team1.team} Bowling</h3>
                                 <ul>
                                     {team1Bowlers.map(player => (
-                                        <li key={player.player_id}>{player.name}</li>
+                                        <li key={player.player_id}>{player.name} {player.balls_bowled} {player.runs_conceded} {player.wickets}</li>
                                     ))}
                                 </ul>
                             </div>
@@ -497,7 +509,7 @@ const AdminControlPanel = () => {
                                 <h3>{message.team2.team} Bowling</h3>
                                 <ul>
                                     {team2Bowlers.map(player => (
-                                        <li key={player.player_id}>{player.name}</li>
+                                        <li key={player.player_id}>{player.name} {player.balls_bowled} {player.runs_conceded} {player.wickets}</li>
                                     ))}
                                 </ul>
                             </div>

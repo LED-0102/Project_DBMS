@@ -100,14 +100,14 @@ pub async fn process_json( js: Value) -> (i32, String) {
         if pgi.cur_bat_team == pgi.team1.team {
             over_num = pgi.team1.overs/6 + 1;
         } else {
-            over_num = pgi.team2.overs/6 + 1;
+            over_num = pgi.team2.overs/6 + 1+50;
         }
 
         let striker: i32 = js.get("striker").unwrap().as_i64().unwrap() as i32;
         let non_striker: i32 = js.get("non_striker").unwrap().as_i64().unwrap() as i32;
         let mut overs = OVERS.lock().unwrap();
         overs.over_number = over_num;
-        if over_num != 1{
+        if over_num != 1 && over_num!=51{
             overs.striker = non_striker;
             pgi.striker = non_striker;
             pgi.non_striker =  striker;

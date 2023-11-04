@@ -163,13 +163,9 @@ impl ws::Handler for WS {
                 {
                     let mut page_info_guard = PAGEINFO.lock().unwrap();
                     println!("{} {} {}", page_info_guard.team1.runs, page_info_guard.team1.overs, page_info_guard.team1.wickets);
-                    let pg: PageInfo = page_info_guard.clone();
-                    json_data = serde_json::to_string(&pg).unwrap();
-                    for (client,_) in SENDERS.lock().unwrap().iter() {
-                        client.sender.send(json_data.clone()).unwrap();
-                    }
+
                     println!("Balls taken {}", page_info_guard.team1.overs);
-                    if (page_info_guard.team1.overs == 300 || page_info_guard.team1.wickets>=10) && page_info_guard.cur_bat_team == page_info_guard.team1.team {
+                    if (page_info_guard.team1.overs == 300 || page_info_guard.team1.wickets>=10) && (page_info_guard.cur_bat_team == page_info_guard.team1.team) {
                         println!("Team 1 {} Team1 wickets {} team1 runs", &page_info_guard.team1.team, &page_info_guard.team1.wickets);
                         let client = connect().await;
                         let s: Statement = client.prepare("UPDATE scorecard set runs_scored=$1, six_bat=$2, four_bat=$3, balls_faced=$4, out=$5, got_out=$6, balls_bowled=$7, runs_conceded=$8, wickets=$9, nb=$10, lb=$11, wd=$12, team=$13 where year=$14 and match_id=$15 and player_id=$16").await.expect("Wrong scorecard putting query");
@@ -198,10 +194,12 @@ impl ws::Handler for WS {
                         overs.over_number +=1;
                         overs.num_ball=0;
                         overs.bowler=0;
-
                         page_info_guard.cur_bat_team = page_info_guard.team2.team.clone();
+                        page_info_guard.striker = 0;
+                        page_info_guard.non_striker=0;
+                        page_info_guard.bowler=0;
                     }
-                    else if page_info_guard.cur_bat_team == page_info_guard.team2.team && (page_info_guard.team2.overs == 300 || page_info_guard.team2.wickets>=10 || page_info_guard.team2.runs > page_info_guard.team1.runs) {
+                    else if (page_info_guard.cur_bat_team == page_info_guard.team2.team) && (page_info_guard.team2.overs == 300 || page_info_guard.team2.wickets>=10 || page_info_guard.team2.runs > page_info_guard.team1.runs) {
                         let client = connect().await;
                         let s: Statement = client.prepare("UPDATE scorecard set runs_scored=$1, six_bat=$2, four_bat=$3, balls_faced=$4, out=$5, got_out=$6, balls_bowled=$7, runs_conceded=$8, wickets=$9, nb=$10, lb=$11, wd=$12, team=$13 where year=$14 and match_id=$15 and player_id=$16").await.expect("Wrong scorecard putting query");
                         let s2: Statement = client.prepare("UPDATE fixtures set run1=$1, run2=$2, wicket1=$3, wicket2=$4, ball1=$5, ball2=$6 where year=$7 and match_id=$8").await.expect("Wrong runs adding query");
@@ -215,7 +213,6 @@ impl ws::Handler for WS {
                             Err(_) => {println!("Error while adding overs");}
                         }
                         overs.figures = "".to_string();
-                        overs.figures = "".to_string();
                         overs.over_number +=1;
                         overs.num_ball=0;
                         overs.bowler=0;
@@ -227,6 +224,39 @@ impl ws::Handler for WS {
                         }
                         client.execute(&s2, &[&page_info_guard.team1.runs, &page_info_guard.team2.runs, &page_info_guard.team1.wickets, &page_info_guard.team2.wickets, &page_info_guard.team1.overs, &page_info_guard.team2.overs, &year, &match_id]).await.expect("Error pushing the scores into fixtures");
                         page_info_guard.cur_bat_team = page_info_guard.team2.team.clone();
+
+                        let stww: Statement = client.prepare("UPDATE teams SET won=won+1 WHERE year=$1 AND team_playing =$2").await.expect("wrong winner adding query");
+                        let stll: Statement = client.prepare("UPDATE teams SET lost =lost+1 WHERE year=$1 AND team_playing =$2").await.expect("wrong winner adding query");
+                        let sttt: Statement = client.prepare("UPDATE teams SET draw =draw+1 WHERE year=$1 AND team_playing =$2").await.expect("wrong winner adding query");
+                        let stfx: Statement = client.prepare("UPDATE fixtures SET winner=$1 WHERE year=$2 AND match_id=$3").await.expect("Wrong winner addin query");
+                        let mut winner: String;
+                        let mut loser: String;
+                        let mut tied: bool =false;
+                        if page_info_guard.team1.runs > page_info_guard.team2.runs {
+                            winner = page_info_guard.team1.team.clone();
+                            loser = page_info_guard.team2.team.clone();
+                        } else if page_info_guard.team1.runs < page_info_guard.team2.runs {
+                            loser = page_info_guard.team1.team.clone();
+                            winner = page_info_guard.team2.team.clone();
+                        } else {
+                            tied=true;
+                            winner = page_info_guard.team1.team.clone();
+                            loser = page_info_guard.team2.team.clone();
+                        }
+                        if tied {
+                            client.execute(&sttt, &[&year, &winner]).await.expect("Error Adding draw");
+                            client.execute(&sttt, &[&year, &loser]).await.expect("Error Adding draw");
+                            client.execute(&stfx, &[&winner, &year, &match_id]).await.expect("Error adding winner in fixtures");
+                        } else {
+                            client.execute(&stll, &[&year, &loser]).await.expect("Error Adding Loser");
+                            client.execute(&stww, &[&year, &winner]).await.expect("Error Adding winner");
+                            client.execute(&stfx, &[&winner, &year, &match_id]).await.expect("Error adding winner in fixtures");
+                        }
+                    }
+                    let pg: PageInfo = page_info_guard.clone();
+                    json_data = serde_json::to_string(&pg).unwrap();
+                    for (client,_) in SENDERS.lock().unwrap().iter() {
+                        client.sender.send(json_data.clone()).unwrap();
                     }
                 }
 
