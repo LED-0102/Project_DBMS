@@ -1,0 +1,97 @@
+.topbar {
+    background: #2E0273;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.heading1 {
+    font-weight: 80px;
+    font-size: 50px;
+    color: white;
+    /* font-family: Gill Sans, "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
+    text-transform: uppercase;
+    padding-top: 80px;
+    padding-left: 50px;
+    border-bottom: 8px solid purple;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.amit2 {
+    font-weight: 80px;
+    font-size: 50px;
+    color:white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    padding-top:50px;
+    padding-bottom: 0px;
+    padding-left: 50px;
+    margin-top: 0px;
+}
+
+.div-with-line {
+    display: flex;
+    justify-content: center;
+    /* position: relative; */
+}
+
+.line {
+    position: absolute;
+    padding: 2px 2px;
+    height: 1.2px; /* Adjust the thickness of the line */
+    background-color:purple; /* Line color */
+    z-index: 1; /* Ensure the line displays above other content in the div */
+}
+
+
+.amit1{
+    background-color: #2E0273;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-bottom: 10px solid purple;
+}
+
+.amit3{
+    background-color: purple;
+}
+
+.standings-table {
+    width: 100%;
+    /* padding-left: 100px; */
+    /* margin-top: 80px; */
+
+    overflow: hidden;
+}
+
+.standings-table th,
+.standings-table td {
+    padding: 15px;
+
+    text-align: center;
+}
+
+.standings-table th {
+
+    color: #fff;
+    font-weight: bold;
+}
+
+.standings-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.standings-table tbody tr:nth-child(odd) {
+    background-color: rgb(187, 170, 187);
+}
+
+.standings-table tbody tr:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.2s;
+}
+
+.dig{
+
+    padding-left: 100px;
+
+
+}

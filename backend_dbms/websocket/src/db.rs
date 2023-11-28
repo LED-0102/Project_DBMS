@@ -644,7 +644,12 @@ pub async fn process_json( js: Value) -> (i32, String) {
             client.execute(&s, &[&i.runs_scored, &i.six_bat, &i.four_bat, &i.balls_faced, &i.out, &i.got_out, &i.balls_bowled, &i.runs_conceded, &i.wickets, &i.nb, &i.lb, &i.wd, &i.country ,&year, &match_id, &i.player_id]).await.expect("Error pushing the values to database");
         }
         client.execute(&s2, &[&cur_state.team1.runs, &cur_state.team2.runs, &cur_state.team1.wickets, &cur_state.team2.wickets, &cur_state.team1.overs, &cur_state.team2.overs, &year, &match_id]).await.expect("Error pushing the scores into fixtures");
-        cur_state.cur_bat_team = cur_state.team2.team.clone();
+        if cur_state.cur_bat_team == cur_state.team2.team {
+            cur_state.match_status=false;
+        } else {
+            cur_state.cur_bat_team = cur_state.team2.team.clone();
+        }
+
 
         let json_object: Id5 = Id5 {
             json_id: js.get("id").unwrap().as_i64().unwrap().clone() as i32,

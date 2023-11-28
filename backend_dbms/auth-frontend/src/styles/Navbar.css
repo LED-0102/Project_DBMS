@@ -1,0 +1,71 @@
+/* Navbar.css */
+
+.navbar {
+    background: #2E0273;
+    padding: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 15px solid purple;
+}
+
+.navhead {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logohead {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+.logoImgStyle {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    margin-left: 20px;
+    margin-top: 12px;
+}
+
+.buttonStyle {
+    border: 2px solid #f9f9f9;
+    border-radius: 18px;
+    background-color: #2E0273;
+    color: #f9f9f9;
+    font-size: 15px;
+    font-weight: 550;
+    padding: 1px 15px;
+    width: fit-content;
+    height: 30px;
+    cursor: pointer;
+}
+
+.buttonStyle:hover {
+    background-color: purple;
+}
+
+.navItemStyle {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 10px;
+    padding: 5px;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.navItemStyle:hover {
+    border-bottom: 3px solid purple;
+}
+
+.separatorStyle {
+    border-right: 1px solid #f9f9f9;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.sign {
+    display: flex;
+    align-items: center;
+}

@@ -3,8 +3,8 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
-        <language minSize="150" name="Rust" />
-        <language minSize="91" name="JavaScript" />
+        <language minSize="322" name="Rust" />
+        <language minSize="1455" name="JavaScript" />
       </Languages>
     </inspection_tool>
   </profile>

@@ -1,0 +1,72 @@
+/* Slideshow.css */
+
+.home {
+    display: flex;
+}
+
+.slideshow-container-left {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 55vw;
+    height: 60vh; /* Adjust according to your navbar and footer height */
+    overflow: hidden;
+    margin-top: 10px;
+    border: 2px solid #1d1b77;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.slideshow-container-right {
+    position: absolute;
+    top: 50%;
+    left: 79%;
+    transform: translate(-50%, -50%);
+    width: 40vw;
+    height: 80vh; /* Adjust according to your navbar and footer height */
+    overflow: visible;
+    margin-top: 10px;
+    border: none;
+}
+
+.dark-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Dark layer with 50% opacity */
+}
+
+.slideshow-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arrow {
+    position: absolute;
+    top: 40%;
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px;
+    border: none;
+    outline: none;
+    transition: font-size 0.3s, top 0.3s;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.arrow:hover {
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    font-size: 45px;
+    top: 40.2%
+}

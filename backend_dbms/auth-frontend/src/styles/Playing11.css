@@ -1,0 +1,93 @@
+/* CricketTeamsPage.css */
+
+.team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.team-box {
+    background-color: rgb(177, 97, 177); /* Purple background */
+    color: white;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: 150px; /* Adjust the width as needed */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    white-space: nowrap; /* Display team name in a single line */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
+}
+
+.team-box:hover {
+    background-color: #6c3483; /* Darker purple on hover */
+}
+
+.players-table {
+    display: block;
+    cursor: pointer;
+    margin: 20px;
+    border: 2px solid #8e44ad; /* Border color matches team box background */
+    border-radius: 5px;
+    padding: 20px;
+    background-color: rgb(182, 74, 182);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #8e44ad; /* Purple background */
+    color: white;
+}
+
+th, td {
+    font-weight: bold;
+}
+
+.players-table tbody tr:hover {
+    background-color: #f5f5f5; /* Change the color on hover */
+    font-weight: bold; /* Make the text bold on hover */
+}
+
+.aru{
+    background-color: #4a2780;
+}
+
+
+
+.player-profile-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent backdrop color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yoga{
+    height: 20px;
+    width: 20px;
+    padding-left: 470px;
+}

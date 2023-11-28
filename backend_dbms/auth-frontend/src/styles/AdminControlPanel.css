@@ -1,9 +1,10 @@
 /* Admin Control Panel Container */
 .admin-control-panel {
-    padding: 20px;
-    background-color: #f5f5f5;
+    padding: 10px;
+    background-color: #2E0273;
     font-family: Arial, sans-serif;
 }
+h1{color: white}
 
 /* Buttons Container */
 .buttons-container {
@@ -15,8 +16,8 @@ button {
     margin-right: 10px;
     margin-bottom: 10px;
     padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
+    background-color: #52abab;
+    color: #024402;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -24,7 +25,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #388181;
 }
 
 /* Select Box Styles */
@@ -36,7 +37,7 @@ select {
 
 /* Cricket Match Info Styles */
 .cricket-match-info {
-    background-color: white;
+    background-color: #491ca1;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -48,12 +49,13 @@ select {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    color: whitesmoke;
 }
 
 .team {
     flex: 1;
     padding: 10px;
-    background-color: #f1f1f1;
+    background-color: #3c82ad;
     border-radius: 5px;
 }
 
@@ -66,7 +68,7 @@ select {
 
 .over-slot {
     flex: 1;
-    background-color: #f9f9f9;
+    background-color: #0c455e;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -83,26 +85,28 @@ select {
     flex: 1;
     padding: 10px;
     text-align: center;
-    background-color: #4caf50;
-    color: white;
+    background-color: #3c82ad;
+    color: #f9f9f9;
     cursor: pointer;
     border-radius: 5px 5px 0 0;
 }
 
 .table-name.active {
-    background-color: #45a049;
+    background-color: #284f75;
 }
 
 /* Table Content Styles */
 .table-content {
-    background-color: white;
+    background-color: #9a21c2;
     padding: 20px;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #0c455e;
 }
 
 /* Table Styles */
 .table {
+    color: #0c455e;
     margin-bottom: 20px;
 }
 
@@ -112,6 +116,7 @@ select {
 }
 
 .table ul {
+
     list-style: none;
     padding: 0;
 }
@@ -120,3 +125,18 @@ select {
     font-size: 16px;
     margin-bottom: 5px;
 }
+
+
+.table-content table th {
+    background-color: purple;
+}
+.table-content table tbody td {
+    /*background-color: whitesmoke;*/
+}
+
+.table-content table tbody t:nth-child(odd) {
+    background-color: #626161;
+}
+
+
+

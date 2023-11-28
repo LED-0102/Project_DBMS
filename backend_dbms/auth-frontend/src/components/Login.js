@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import api from '../services/api';
-import '../styles/Login.css';
-import {useNavigate} from "react-router-dom";
+import "../styles/Login.css";
+import { useNavigate, NavLink} from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -16,7 +18,7 @@ const Login = () => {
             console.log(response.status);
             if (response.status === 200){
                 localStorage.setItem("token", response.data);
-                navigate("/welcome");
+                navigate("/home")
             }
 
             else if (response.status === 404){
@@ -31,27 +33,38 @@ const Login = () => {
         }
     };
 
-    return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Login</button>
-                {error && <p>{error}</p>}
-            </form>
-        </div>
+    return (<>
+
+            <Navbar/>
+
+            <div className="login">
+                <form onSubmit={handleLogin}>
+                    <h1 style={{color: "white",paddingBottom: '30px'}}>Login</h1>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+
+                    />
+                    {/*<p className="error">{formErrors.email}</p>*/}
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+
+                    />
+                    {/*<p className="error">{formErrors.password}</p>*/}
+                    <button className="button_common" type="submit">
+                        Login
+                    </button>
+                    {error && <p>{error}</p>}
+                </form>
+                <NavLink to="/register" style={{color: 'white'}}>Not Registered Yet! Register Now</NavLink>
+            </div>
+
+        </>
     );
 };
-
 export default Login;

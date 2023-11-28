@@ -2,8 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import '../styles/AdminControlPanel.css';
 import Navbar from "./Navbar";
-const Match = () => {
+import match from "./Match";
+const Arc_Match = () => {
     const { year , match_id} = useParams();
+    const navigate = useNavigate();
+    if (year==="2023" && match_id==="1") {
+        navigate("/match/2023/1");
+    }
     const ballValues = [
         { id: 0, value: '0'},
         { id: 1, value: '1'},
@@ -19,7 +24,6 @@ const Match = () => {
     const [currentMatchState, setCurrentMatchState] = useState({});
     const [bowlersList, setBowlersList] = useState([]);
     const [selectedBowlerId, setSelectedBowlerId] = useState(null);
-    const navigate = useNavigate();
     const [message, setMessage] = useState(null);
     const [socket1, setSocket] = useState(null);
     const [selectedTable, setSelectedTable] = useState(null);
@@ -39,103 +43,23 @@ const Match = () => {
             navigate('/login');
             return;
         }
-        const socket = new WebSocket('ws://localhost:8000');
-        setSocket(socket);
-        socket.onopen = () => {
-            console.log('WebSocket connection opened.');
-            const token = JSON.parse(tokenString);
-            const jsonData = {
-                token: token.token,
-                id: 1,
-            };
-            const resp = JSON.stringify(jsonData);
-            socket.send(resp);
-        };
-
-        socket.onmessage = (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                // if (data.json_id === 1){
-                console.log("here json_id 1");
-                setMessage(data);
-                console.log(data);
-                if (data.cur_bat_team === data.team1.team){
-                    let bowl;
-                    let str;
-                    let nonstr;
-                    if (data.bowler !== 0){
-                        bowl = data.player2.find(value => value.player_id === data.bowler).name;
-                    } else {
-                        bowl=0;
-                    }
-                    if (data.striker !== 0){
-                        str = data.player1.find(value => value.player_id === data.striker).name;
-                    } else {
-                        str=0;
-                    }
-                    if (data.non_striker !== 0){
-                        nonstr = data.player1.find(value => value.player_id === data.non_striker).name;
-                    } else {
-                        nonstr=0;
-                    }
-                    console.log(str);
-                    console.log(nonstr);
-                    console.log(bowl);
-                    setStriker(str);
-                    setNonStriker(nonstr);
-                    setBowler(bowl);
-                    setOverNum(parseInt(data.team1.overs/6) +1);
-                    setBallCount(data.team1.overs%6);
-                } else {
-                    let bowl;
-                    let str;
-                    let nonstr;
-                    if (data.bowler !== 0){
-                        bowl = data.player1.find(value => value.player_id === data.bowler).name;
-                    } else {
-                        bowl=0;
-                    }
-                    if (data.striker !== 0){
-                        str = data.player2.find(value => value.player_id === data.striker).name;
-                    } else {
-                        str=0;
-                    }
-                    if (data.non_striker !== 0){
-                        nonstr = data.player2.find(value => value.player_id === data.non_striker).name;
-                    } else {
-                        nonstr=0;
-                    }
-                    console.log(str);
-                    console.log(nonstr);
-                    console.log(bowl);
-                    setStriker(str);
-                    setNonStriker(nonstr);
-                    setBowler(bowl);
-                    setOverNum(parseInt(data.team1.overs/6) +1);
-                    setBallCount(data.team2.overs%6);
+        fetch(`http://localhost:8080/api/match/${year}/${match_id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            } catch (error) {
-                console.error('Error parsing incoming JSON:', error);
-            }
-        };
+                return response.json();
+            })
+            .then(data => {
+                // Set the fetched data to the state
+                setMessage(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error fetching match data:', error);
+                // You can set an error message state here if needed
+            });
 
-        socket.onclose = (event) => {
-            if (event.code === 1007) {
-                navigate("/login");
-            }
-            if (event.code === 1000) {
-                console.log('WebSocket connection closed cleanly, no errors.');
-            } else {
-                console.error('WebSocket connection closed with error:', event);
-            }
-        };
-
-        // Cleanup the socket connection when the component is unmounted
-        return () => {
-            if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) {
-                socket.close();
-            }
-        };
     }, []);
     // Fetch bowlers list and current match state from WebSocket on component mount
 
@@ -175,9 +99,9 @@ const Match = () => {
                             <p>Balls Taken: {message.team2.overs}</p>
                         </div>
                     </div>
-                    {((message.team2.runs <= message.team1.runs) && message.team2.wickets!==10) && (<div style={{color:'white'}}>
-                        <p>Striker: {striker}</p>
-                        <p>Non-Striker: {non_striker}</p>
+                    {((message.team2.runs <= message.team1.runs) && message.team2.wickets!==10) && (<div>
+                        <p>Striker: {striker} and {message.striker}</p>
+                        <p>Non-Striker: {non_striker} and {message.non_striker}</p>
                         <p>Cur_bat_team: {message.cur_bat_team}</p>
                         <p>Bowler: {bowler}</p>
                         <p>Over_num: {overNum}</p>
@@ -185,13 +109,13 @@ const Match = () => {
                     </div>)}
 
                     {((message.team2.runs < message.team1.runs) && message.team2.wickets===10) && (
-                        <div>
-                            <p>{message.team1.team} won by {message.team1.runs - message.team2.runs} runs</p>
+                        <div style={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
+                            <p style={{color:'white'}}>{message.team1.team} won by {message.team1.runs - message.team2.runs} runs</p>
                         </div>
                     )}
                     {(message.team2.runs > message.team1.runs)&& (
-                        <div>
-                            <p>{message.team2.team} won by {10-message.team2.wickets} wickets</p>
+                        <div style={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
+                            <p style={{color:'white'}}>{message.team2.team} won by {10-message.team2.wickets} wickets</p>
                         </div>
                     )}
 
@@ -232,7 +156,7 @@ const Match = () => {
                         <div className="table-content">
                             {selectedTable === 'team1-batting' && (
                                 <div className="table">
-                                    <h3>{message.team1.team} Batting</h3>
+                                    <h3 style={{color:'white'}}>{message.team1.team} Batting</h3>
                                     <table className="tq">
                                         <thead>
                                         <tr>
@@ -259,7 +183,7 @@ const Match = () => {
                             )}
                             {selectedTable === 'team2-batting' && (
                                 <div className="table">
-                                    <h3>{message.team2.team} Batting</h3>
+                                    <h3 style={{color:'white'}}>{message.team2.team} Batting</h3>
                                     <table>
                                         <thead>
                                         <tr>
@@ -286,7 +210,7 @@ const Match = () => {
                             )}
                             {selectedTable === 'team1-bowling' && (
                                 <div className="table">
-                                    <h3>{message.team1.team} Bowling</h3>
+                                    <h3 style={{color:'white'}}>{message.team1.team} Bowling</h3>
                                     <table>
                                         <thead>
                                         <tr>
@@ -314,7 +238,7 @@ const Match = () => {
 
                             {selectedTable === 'team2-bowling' && (
                                 <div className="table">
-                                    <h3>{message.team2.team} Bowling</h3>
+                                    <h3 style={{color:'white'}}>{message.team2.team} Bowling</h3>
                                     <table>
                                         <thead>
                                         <tr>
@@ -346,4 +270,4 @@ const Match = () => {
     );
 };
 
-export default Match;
+export default Arc_Match;

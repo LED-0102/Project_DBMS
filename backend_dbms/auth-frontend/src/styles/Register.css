@@ -1,35 +1,82 @@
-/* Register.css */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #4a2780;
+}
 
-form {
+.login-container {
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
+    align-items: center;
+    height: 100vh;
 }
 
-input {
-    margin-bottom: 10px;
-    padding: 10px;
+.login {
+    width: 500px;
+    background: #2E0273;
+    border: 2px solid purple;
+    box-shadow: 0 0 10px rgb(66, 2, 66);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    margin: auto; /* Center the login box */
+    margin-top: 200px;
+}
+
+.login > form input {
+    border-radius: 10px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 80%;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
-button {
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px 20px;
+.button_common {
+    background-color: rgb(185, 7, 185);
+    color: white;
+    padding: 12px 30px;
     border: none;
-    border-radius: 5px;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 15px;
+    margin: 1rem;
+    width: 40%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #218838;
+.button_common:hover {
+    background-color: rgb(129, 3, 129);
 }
 
-.error-message {
-    color: #dc3545;
-    margin-top: 10px;
+.error {
+    color: red;
+    text-align: left;
+    margin: auto;
+    font-size: 16px;
+    padding: 0px 1rem;
+}
+
+.register {
+    width: 500px;
+    background: #2E0273;
+    border: 2px solid purple;
+    box-shadow: 0 0 10px rgb(66, 2, 66);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    margin: auto; /* Center the login box */
+    margin-top: 100px;
+}
+
+.register > form input {
+    border-radius: 10px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
 }

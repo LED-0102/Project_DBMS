@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import './AdminControlPanel.css'; // Import your CSS file for styling
-
+import '../styles/AdminControlPanel.css';
+import Navbar from "./Navbar";
 const AdminControlPanel = () => {
     const ballValues = [
         { id: 0, value: '0'},
@@ -204,6 +204,9 @@ const AdminControlPanel = () => {
         };
 
         socket.onclose = (event) => {
+            if (event.code === 1007) {
+                navigate("/login");
+            }
             if (event.code === 1000) {
                 console.log('WebSocket connection closed cleanly, no errors.');
             } else {
@@ -361,7 +364,8 @@ const AdminControlPanel = () => {
         curBowlers = message.player1.filter(player => player.player_type === 'Bowler' || player.player_type === 'All-rounder');
     }
 
-    return (
+    return (<>
+            <Navbar/>
         <div className="admin-control-panel">
             <h1>Admin Control Panel</h1>
             <div className="buttons-container">
@@ -402,7 +406,7 @@ const AdminControlPanel = () => {
             </div>
             <div className="cricket-match-info">
                 <h1>{message.team1.team} vs {message.team2.team}</h1>
-                <h2>Venue: {message.venue.venue_name}, {message.venue.city}, {message.venue.country}</h2>
+                <h2 style={{color: 'grey', fontSize: '17px'}}>Venue: {message.venue.venue_name}, {message.venue.city}, {message.venue.country}</h2>
 
                 {/* Display scores, wickets, balls taken for both teams */}
                 <div className="team-info">
@@ -419,9 +423,9 @@ const AdminControlPanel = () => {
                         <p>Balls Taken: {message.team2.overs}</p>
                     </div>
                 </div>
-                {((message.team2.runs <= message.team1.runs) && message.team2.wickets!==10) && (<div>
-                    <p>Striker: {striker} and {message.striker}</p>
-                    <p>Non-Striker: {non_striker} and {message.non_striker}</p>
+                {((message.team2.runs <= message.team1.runs) && message.team2.wickets!==10) && (<div style={{color: 'white'}}>
+                    <p>Striker: {striker}</p>
+                    <p>Non-Striker: {non_striker}</p>
                     <p>Cur_bat_team: {message.cur_bat_team}</p>
                     <p>Bowler: {bowler}</p>
                     <p>Over_num: {overNum}</p>
@@ -445,7 +449,7 @@ const AdminControlPanel = () => {
 
                 {/* Display player names for team 1 batting, team 2 batting, team 1 bowling, and team 2 bowling */}
                 <div className="table-selector">
-                    <div
+                    <div style={{color: 'white'}}
                         className={`table-name ${selectedTable === 'team1-batting' ? 'active' : ''}`}
                         onClick={() => setSelectedTable('team1-batting')}
                     >
@@ -476,48 +480,117 @@ const AdminControlPanel = () => {
                     <div className="table-content">
                         {selectedTable === 'team1-batting' && (
                             <div className="table">
-                                <h3>{message.team1.team} Batting</h3>
-                                <ul>
+                                <h3 style={{color: 'white'}}>{message.team1.team} Batting</h3>
+                                <table className="tq">
+                                    <thead>
+                                    <tr>
+                                        <th>Batsman</th>
+                                        <th>Runs</th>
+                                        <th>Balls</th>
+                                        <th>4s</th>
+                                        <th>6s</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
                                     {message.player1.map(player => (
-                                        <li key={player.player_id}>{player.name} {player.runs_scored} {player.balls_faced} {player.four_bat} {player.six_bat}</li>
+                                        <tr key={player.player_id}>
+                                            <td>{player.name}</td>
+                                            <td>{player.runs_scored}</td>
+                                            <td>{player.balls_faced}</td>
+                                            <td>{player.four_bat}</td>
+                                            <td>{player.six_bat}</td>
+                                        </tr>
                                     ))}
-                                </ul>
+                                    </tbody>
+                                </table>
                             </div>
                         )}
                         {selectedTable === 'team2-batting' && (
-                            <div className="table">
-                                <h3>{message.team2.team} Batting</h3>
-                                <ul>
-                                    {message.player2.map(player => (
-                                        <li key={player.player_id}>{player.name} {player.runs_scored} {player.balls_faced} {player.four_bat} {player.six_bat}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div className="table">
+                            <h3 style={{color: 'white'}}>{message.team2.team} Batting</h3>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Batsman</th>
+                                    <th>Runs</th>
+                                    <th>Balls</th>
+                                    <th>4s</th>
+                                    <th>6s</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {message.player2.map(player => (
+                                    <tr key={player.player_id}>
+                                        <td>{player.name}</td>
+                                        <td>{player.runs_scored}</td>
+                                        <td>{player.balls_faced}</td>
+                                        <td>{player.four_bat}</td>
+                                        <td>{player.six_bat}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
                         )}
                         {selectedTable === 'team1-bowling' && (
-                            <div className="table">
-                                <h3>{message.team1.team} Bowling</h3>
-                                <ul>
-                                    {team1Bowlers.map(player => (
-                                        <li key={player.player_id}>{player.name} {player.balls_bowled} {player.runs_conceded} {player.wickets}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div className="table">
+                            <h3 style={{color: 'white'}}>{message.team1.team} Bowling</h3>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Bowler</th>
+                                    <th>Balls</th>
+                                    <th>RunsConceded</th>
+                                    <th>Wickets</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {team1Bowlers.map(player => (
+                                    <tr key={player.player_id}>
+                                        <td>{player.name}</td>
+                                        <td>{player.balls_bowled}</td>
+                                        <td>{player.runs_conceded}</td>
+                                        <td>{player.wickets}</td>
+
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
                         )}
-                        {selectedTable === 'team2-bowling' && (
-                            <div className="table">
-                                <h3>{message.team2.team} Bowling</h3>
-                                <ul>
-                                    {team2Bowlers.map(player => (
-                                        <li key={player.player_id}>{player.name} {player.balls_bowled} {player.runs_conceded} {player.wickets}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+
+
+                {selectedTable === 'team2-bowling' && (
+                    <div className="table">
+                        <h3 style={{color: 'white'}}>{message.team2.team} Bowling</h3>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Bowler</th>
+                                <th>Balls</th>
+                                <th>RunsConceded</th>
+                                <th>Wickets</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {team2Bowlers.map(player => (
+                                <tr key={player.player_id}>
+                                    <td>{player.name}</td>
+                                    <td>{player.balls_bowled}</td>
+                                    <td>{player.runs_conceded}</td>
+                                    <td>{player.wickets}</td>
+
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
                     </div>
                 )}
+                        </div>
+            )}
+
             </div>
-        </div>
+        </div></>
     );
 };
 

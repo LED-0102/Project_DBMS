@@ -23,10 +23,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71e8b934-8874-461c-ab96-b90c67023406" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Archive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Navbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Playing11.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Standings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Stats.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Venue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/arc_match.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/mainlogo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Archive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Playing11.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Standings.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Venue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/archive.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/match_data.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/player.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/points_table.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/stats.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/teams.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_dbms/src/view/venue.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/AdminControlPanel.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/AdminControlPanel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/AdminControlPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/AdminControlPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Fixtures.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Fixtures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/MatchFixtures.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/MatchFixtures.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Welcome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/match.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/match.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles/Register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/src/view/fixtures.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/src/view/fixtures.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/src/view/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/src/view/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend_dbms/websocket/src/db.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/websocket/src/db.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend_dbms/websocket/src/wst.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/websocket/src/wst.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/websocket/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/websocket/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend_dbms/websocket/src/websocket.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend_dbms/websocket/src/websocket.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_loader" beforeDir="false" afterPath="$PROJECT_DIR$/db_loader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_loader/darshil.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db_loader/darshil.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_loader/src/fx.rs" beforeDir="false" afterPath="$PROJECT_DIR$/db_loader/src/fx.rs" afterDir="false" />
@@ -47,14 +88,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="Rust File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/db_loader" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="cguvt5t9" />
@@ -85,7 +126,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/darshil/LED/IITI/DSA Lab&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/darshil/LED/Blockchain&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -104,6 +145,9 @@
     &quot;DatabaseDriversLRU&quot;: [
       &quot;postgresql&quot;
     ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
+    ],
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
       &quot;GitIgnore&quot;
     ]
@@ -111,15 +155,16 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend_dbms/auth-frontend/src" />
       <recent name="$PROJECT_DIR$/backend_dbms" />
       <recent name="$PROJECT_DIR$/lab_5/q3/register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend_dbms/auth-frontend/src/styles" />
       <recent name="$PROJECT_DIR$/backend_dbms/websocket/src" />
       <recent name="$PROJECT_DIR$/backend_dbms/websocket" />
       <recent name="$PROJECT_DIR$/lab_5/q4" />
       <recent name="$PROJECT_DIR$/db_loader" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Cargo.Run db_loader">
@@ -293,7 +338,15 @@
       <workItem from="1698991561706" duration="73000" />
       <workItem from="1698995724365" duration="1787000" />
       <workItem from="1699007975804" duration="897000" />
-      <workItem from="1699080647379" duration="1960000" />
+      <workItem from="1699080647379" duration="2574000" />
+      <workItem from="1699089040114" duration="8604000" />
+      <workItem from="1699355207361" duration="28000" />
+      <workItem from="1700124920969" duration="2067000" />
+      <workItem from="1700142655562" duration="7823000" />
+      <workItem from="1700151819366" duration="10000" />
+      <workItem from="1700161967155" duration="38115000" />
+      <workItem from="1700212532437" duration="6095000" />
+      <workItem from="1700236129719" duration="145000" />
     </task>
     <servers />
   </component>
@@ -307,11 +360,6 @@
           <url>file://$PROJECT_DIR$/lab_5/q4/src/auth/login.rs</url>
           <line>8</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/backend_dbms/src/main.rs</url>
-          <line>15</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/backend_dbms/src/main.rs</url>
@@ -353,10 +401,18 @@
           <line>444</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/backend_dbms/src/view/mod.rs</url>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/AdminControlPanel.js</url>
-          <line>402</line>
+          <line>406</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend_dbms/auth-frontend/src/components/Match.js</url>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

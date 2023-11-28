@@ -25,7 +25,10 @@ pub struct PageInfo {
     pub non_striker: i32,
     pub bowler: i32,
     pub cur_bat_team: String,
+    pub match_status: bool,
+    pub over: Overs,
 }
+#[derive(Serialize, Clone)]
 pub struct Overs{
     pub year: i32,
     pub match_id: i32,
@@ -63,6 +66,8 @@ impl PageInfo {
             non_striker: 0,
             bowler: 0,
             cur_bat_team: "".to_string(),
+            match_status: true,
+            over: Overs::new(),
         }
     }
 }
